@@ -18,15 +18,30 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Use Node.js 20
+          node-version: '20'
 
       - name: Install dependencies
         run: |
-          npm uninstall jest-react-native-resolver # Ensures the removal of deprecated package
           npm install
-          npm install --save-dev metro-react-native-babel-preset # Adds Babel preset for React Native
-          npm install --save-dev @babel/preset-react # Adds Babel preset for React JSX
-          npm install prop-types # Installs missing dependency
+          npm install --save-dev metro-react-native-babel-preset prop-types
+
+      - name: Verify dependencies
+        run: |
+          if [ ! -d "node_modules/react-native" ]; then
+            echo "React Native is not installed properly. Reinstalling..."
+            npm install react-native
+          fi
+
+      - name: Create jest.setup.js
+        run: |
+          echo "// Mock the __DEV__ global variable used by React Native
+          global.__DEV__ = true;
+
+          // Mock the Platform module with the correct path
+          jest.mock('react-native/Libraries/Utilities/Platform', () => ({
+            OS: 'ios', // Use 'android' if testing Android
+            select: (options) => options.ios,
+          }));" > jest.setup.js
 
       - name: Run tests
         run: npm test
