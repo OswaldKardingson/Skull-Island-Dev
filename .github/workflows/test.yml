@@ -11,7 +11,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,15 +23,13 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          npm install rimraf@latest glob@latest
           npm install --save-dev \
-            @babel/plugin-transform-nullish-coalescing-operator \
-            @babel/plugin-transform-optional-catch-binding \
-            @babel/plugin-transform-async-generator-functions \
-            @babel/plugin-transform-object-rest-spread \
             @babel/plugin-transform-numeric-separator \
+            @babel/plugin-transform-nullish-coalescing-operator \
             @babel/plugin-transform-class-properties \
-            @babel/plugin-transform-optional-chaining
+            @babel/plugin-transform-optional-chaining \
+            @babel/plugin-transform-async-generator-functions \
+            @babel/plugin-transform-object-rest-spread
 
       - name: Run tests
         run: npm test
