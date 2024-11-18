@@ -23,9 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          npm install --save-dev metro-react-native-babel-preset
-          npm install prop-types
-          npm install react-native-web # Install react-native-web dependency
+          npm install react-native --save # Ensures react-native is explicitly installed
 
       - name: Run tests
         run: npm test
