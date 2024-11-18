@@ -24,6 +24,7 @@ jobs:
         run: |
           npm install
           npm install --save-dev metro-react-native-babel-preset
+          npm install prop-types
 
       - name: Run tests
         run: npm test
