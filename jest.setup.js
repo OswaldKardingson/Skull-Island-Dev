@@ -1,8 +1,8 @@
 // Mock the __DEV__ global variable used by React Native
 global.__DEV__ = true;
 
-// Mock the Platform module to resolve correctly in Jest
+// Correct path for Platform module mock
 jest.mock('react-native/Libraries/Utilities/Platform', () => ({
-  OS: 'ios', // Change to 'android' if testing Android-specific code
+  OS: 'ios', // Use 'android' if you want to test for Android
   select: (options) => options.ios,
 }));
