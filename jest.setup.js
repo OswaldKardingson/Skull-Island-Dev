@@ -1,8 +1,11 @@
-// Mock the __DEV__ global variable used by React Native
-global.__DEV__ = true;
-
-// Correct path for Platform module mock
-jest.mock('react-native/Libraries/Utilities/Platform', () => ({
-  OS: 'ios', // Use 'android' if you want to test for Android
-  select: (options) => options.ios,
-}));
+module.exports = {
+  transform: {
+    '^.+\\.[t|j]sx?$': 'babel-jest',
+  },
+  transformIgnorePatterns: [
+    'node_modules/(?!(react-native|@react-native|react-native-vector-icons|@react-navigation)/)',
+  ],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'], // Load jest.setup.js
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
+};
