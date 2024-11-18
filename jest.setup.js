@@ -1,11 +1,12 @@
-module.exports = {
-  transform: {
-    '^.+\\.[t|j]sx?$': 'babel-jest',
-  },
-  transformIgnorePatterns: [
-    'node_modules/(?!(react-native|@react-native|react-native-vector-icons|@react-navigation)/)',
-  ],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'], // Load jest.setup.js
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
-};
+// Mock the __DEV__ global variable
+global.__DEV__ = true;
+
+// Mock the Platform module
+jest.mock('react-native/Libraries/Utilities/Platform', () => ({
+  OS: 'ios', // Mock the operating system as 'ios' (or 'android' depending on your test needs)
+  select: jest.fn((options) => options.ios), // Return the iOS-specific option
+}));
+
+// Add any other global mocks if needed
+// For example, if you need to mock Animated or other modules
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
