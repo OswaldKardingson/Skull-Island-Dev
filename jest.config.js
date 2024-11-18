@@ -9,6 +9,7 @@ module.exports = {
   setupFiles: ['<rootDir>/jest.setup.js'], // Specify setup file
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
+  resolver: 'jest-react-native-resolver', // Use React Native resolver
 };
 
 
