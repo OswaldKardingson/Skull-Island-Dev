@@ -1,11 +1,8 @@
-// Mock the __DEV__ global variable
+// Mock the __DEV__ global variable for React Native
 global.__DEV__ = true;
 
-// Mock the Platform module correctly for testing
+// Correctly mock the Platform module from React Native
 jest.mock('react-native/Libraries/Utilities/Platform', () => ({
-  OS: 'andriod', // You can use 'android', 'web', or 'ios' depending on the test
-  select: (obj) => obj.andriod || obj.default, // Adjust this logic based on the platform you are testing
+  OS: 'android', // Set this to 'ios', 'android', or 'web' as needed
+  select: (obj) => obj.android || obj.default, // Adjust for the tested platform
 }));
-
-// Additional global mocks if needed
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
