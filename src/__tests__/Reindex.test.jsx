@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import Reindex from './reindex';
+import Reindex from '../reindex';
 
 describe('Reindex Component', () => {
     it('renders correctly with visibility set to true', () => {

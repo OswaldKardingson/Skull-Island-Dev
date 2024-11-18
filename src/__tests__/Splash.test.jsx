@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import ZMain from './zmain';
+import ZMain from '../zmain';
 
 describe('ZMain Component', () => {
     it('renders correctly with visibility set to true', () => {

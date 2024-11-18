@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import PrivateKey from './privatekey';
+import PrivateKey from '../privatekey';
 
 describe('PrivateKey Component', () => {
     it('renders correctly with visibility set to true', () => {

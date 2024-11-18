@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import Send from './send';
+import Send from '../send';
 
 describe('Send Component', () => {
     it('renders correctly with visibility set to true', () => {

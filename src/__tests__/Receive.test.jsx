@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import Receive from './receive';
+import Receive from '../receive';
 
 describe('Receive Component', () => {
     it('renders correctly with visibility set to true', () => {

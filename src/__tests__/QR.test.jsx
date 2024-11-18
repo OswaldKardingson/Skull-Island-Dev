@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import QR from './qr';
+import QR from '../qr';
 
 describe('QR Component', () => {
     it('renders correctly with visibility props', () => {
