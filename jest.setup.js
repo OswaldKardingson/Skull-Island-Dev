@@ -3,8 +3,8 @@ global.__DEV__ = true;
 
 // Mock the Platform module
 jest.mock('react-native/Libraries/Utilities/Platform', () => ({
-  OS: 'ios', // Mock the operating system as 'ios' (or 'android' depending on your test needs)
-  select: jest.fn((options) => options.ios), // Return the iOS-specific option
+  OS: 'web', // or 'ios'/'android' based on the tests
+  select: (obj) => obj.web, // Resolve platform-specific code paths
 }));
 
 // Add any other global mocks if needed
