@@ -25,7 +25,6 @@ jobs:
           npm install
           npm install --save-dev metro-react-native-babel-preset
           npm install prop-types
-          npm install jest-react-native-resolver --save-dev
 
 
       - name: Run tests
