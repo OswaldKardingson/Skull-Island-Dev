@@ -1,6 +1,6 @@
-{
-  "presets": [
-    "@babel/preset-env",
-    "@babel/preset-react"
-  ]
-}
+module.exports = {
+  presets: [
+    ['@babel/preset-env', { targets: { node: 'current' } }], // Ensures compatibility with the Node.js runtime
+    '@babel/preset-react', // Transforms JSX into JavaScript
+  ],
+};
