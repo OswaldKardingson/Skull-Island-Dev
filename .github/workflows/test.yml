@@ -19,24 +19,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Use Node.js 20
+          node-version: '20'
 
-      - name: Install dependencies and update deprecated packages
+      - name: Install dependencies
         run: |
           npm install
-          npm install rimraf@latest
-          npm install glob@latest
+          npm install rimraf@latest glob@latest
           npm install --save-dev \
-            @babel/plugin-transform-optional-catch-binding \
-            @babel/plugin-transform-numeric-separator \
             @babel/plugin-transform-nullish-coalescing-operator \
+            @babel/plugin-transform-optional-catch-binding \
+            @babel/plugin-transform-async-generator-functions \
             @babel/plugin-transform-object-rest-spread \
-            @babel/plugin-transform-optional-chaining \
+            @babel/plugin-transform-numeric-separator \
             @babel/plugin-transform-class-properties \
-            @babel/plugin-transform-async-generator-functions
-
-      - name: Re-audit dependencies
-        run: npm audit
+            @babel/plugin-transform-optional-chaining
 
       - name: Run tests
         run: npm test
