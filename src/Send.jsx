@@ -27,6 +27,7 @@ const Send = ({ visible, theme }) => {
 
     return (
         <Animated.View
+            testID="container"
             style={[
                 styles.container,
                 {
