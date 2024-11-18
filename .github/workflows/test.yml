@@ -11,6 +11,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,12 +19,24 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Use Node.js 20
+          node-version: '20' # Use Node.js 20
 
-      - name: Install dependencies
+      - name: Install dependencies and update deprecated packages
         run: |
           npm install
-          npm install --save-dev metro-react-native-babel-preset
+          npm install rimraf@latest
+          npm install glob@latest
+          npm install --save-dev \
+            @babel/plugin-transform-optional-catch-binding \
+            @babel/plugin-transform-numeric-separator \
+            @babel/plugin-transform-nullish-coalescing-operator \
+            @babel/plugin-transform-object-rest-spread \
+            @babel/plugin-transform-optional-chaining \
+            @babel/plugin-transform-class-properties \
+            @babel/plugin-transform-async-generator-functions
+
+      - name: Re-audit dependencies
+        run: npm audit
 
       - name: Run tests
         run: npm test
