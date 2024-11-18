@@ -23,18 +23,18 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          npm install --save-dev metro-react-native-babel-preset prop-types
+          npm install --save-dev metro-react-native-babel-preset
+          npm install --save react-native prop-types
 
-      - name: Mock missing dependencies
-        run: |
-          echo "// Mock the __DEV__ global variable
-          global.__DEV__ = true;
+      - name: Mock Platform module
+        run: echo "// Mock the __DEV__ global variable
+        global.__DEV__ = true;
 
-          // Mock the Platform module
-          jest.mock('react-native/Libraries/Utilities/Platform', () => ({
-            OS: 'ios',
-            select: (options) => options.ios,
-          }));" > jest.setup.js
+        // Mock the Platform module
+        jest.mock('react-native/Libraries/Utilities/Platform', () => ({
+          OS: 'ios',
+          select: jest.fn((options) => options.ios),
+        }));" > jest.setup.js
 
       - name: Run tests
         run: npm test
