@@ -22,11 +22,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm uninstall jest-react-native-resolver
+          npm uninstall jest-react-native-resolver # Ensures the removal of deprecated package
           npm install
-          npm install --save-dev metro-react-native-babel-preset
-          npm install prop-types
-
+          npm install --save-dev metro-react-native-babel-preset # Adds Babel preset for React Native
+          npm install --save-dev @babel/preset-react # Adds Babel preset for React JSX
+          npm install prop-types # Installs missing dependency
 
       - name: Run tests
         run: npm test
