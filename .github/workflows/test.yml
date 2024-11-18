@@ -30,7 +30,8 @@ jobs:
             @babel/plugin-transform-object-rest-spread \
             @babel/plugin-transform-async-generator-functions \
             @babel/plugin-transform-optional-chaining \
-            @babel/plugin-transform-class-properties
+            @babel/plugin-transform-class-properties \
+            @babel/preset-react  # Add this line to install @babel/preset-react
 
       - name: Run tests
         run: npm test
