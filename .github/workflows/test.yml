@@ -11,7 +11,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -19,15 +18,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '20'  # Use Node.js 20
 
-      - name: Clean Install Dependencies
+      - name: Install dependencies
         run: |
-          rm -rf node_modules package-lock.json
-          npm install --legacy-peer-deps
+          npm install
+          npm install --save-dev metro-react-native-babel-preset
 
-      - name: Add Babel Config
-        run: echo '{ "presets": ["module:metro-react-native-babel-preset"] }' > .babelrc
-
-      - name: Run Tests
+      - name: Run tests
         run: npm test
